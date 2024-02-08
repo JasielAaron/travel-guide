@@ -1,5 +1,8 @@
 //add api key
 const apiKey ='5effe679202bb71692f127fed032bc1b';
+//add DOM elements
+const input = document.getElementsByClassName('input');//class name! not id
+const countryName = document.getElementById('countryName');
 
 // Fixing the typo in the function call
 function getCountryInfo() {
