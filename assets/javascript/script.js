@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', function() {
     const searchButton = document.getElementById('searchButton');
     searchButton.addEventListener('click', function() {
@@ -30,9 +31,12 @@ function fetchCountryInfo(countryName) {
         });
 }
 
+
 function displayCountryInfo(country) {
     document.getElementById('countryNameResult').textContent = country.name;
     document.getElementById('capitalResult').textContent = country.capital;
     document.getElementById('capitalRes').textContent = country.capital;
     // Add more elements as needed, ensuring HTML has corresponding IDs
+
+
 }
