@@ -124,3 +124,7 @@ h2 {
 #textsizeS {
     font-size: 12px;
 }
+
+.tester2 {
+    display: flex;
+}
