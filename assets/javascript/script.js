@@ -1,62 +1,42 @@
-//add api key
-const apiKey ='5effe679202bb71692f127fed032bc1b';
-//add DOM elements
-const input = document.getElementsByClassName('input');//class name! not id
-const countryName = document.getElementById('countryName');
 
-// Fixing the typo in the function call
-function getCountryInfo() {
-    var search = searchInput.value.trim();
-    var countryInfo = `https://api.countrylayer.com/v2/`;// no access to this key
+document.addEventListener('DOMContentLoaded', function() {
+    const searchButton = document.getElementById('searchButton');
+    searchButton.addEventListener('click', function() {
+        const destination = document.getElementById('destinationInput').value;
+        fetchCountryInfo(destination);
+    });
+});
 
-    fetch(countryInfo)
-        .then(function (response) {
+function fetchCountryInfo(countryName) {
+    const apiKey = '5effe679202bb71692f127fed032bc1b';
+    const apiUrl = `https://api.countrylayer.com/v2/name/${countryName}?access_key=${apiKey}`;
+
+    fetch(apiUrl)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
             return response.json();
         })
-        .then(function (data) {
-            console.log(data);
-            displayTravel(data); // Fixed the typo here
+        .then(data => {
+            if (data && data.length > 0) {
+                const country = data[0]; // Assuming the first result is the most relevant
+                displayCountryInfo(country);
+            } else {
+                console.log('No data found for the specified country');
+            }
         })
-        .catch(function (error) {
-            console.error('Error fetching data: ', error);
-            // You may want to display an error message to the user here
+        .catch(error => {
+            console.error('There has been a problem with your fetch operation:', error);
         });
 }
 
-// Implementing the displayTravel function to update the webpage with country information
-function displayTravel(data) {
-    if (!data || data.status === 404) {
-        // Handle the case where no data is returned or country is not found
-        console.error('Country not found');
-        // Update the DOM to reflect the country not found error
-        document.getElementById('result').textContent = 'Country not found';
-        return;
-    }
 
-    // Assuming data is an array of countries and we're interested in the first one
-    var country = data[0];
-    var countryName = country.name.common; // Get the country name
-    var capital = country.capital[0]; // Get the capital city
+function displayCountryInfo(country) {
+    document.getElementById('countryNameResult').textContent = country.name;
+    document.getElementById('capitalResult').textContent = country.capital;
+    document.getElementById('capitalRes').textContent = country.capital;
+    // Add more elements as needed, ensuring HTML has corresponding IDs
 
-    // Update the DOM with the country's name and capital
-    var resultElement = document.getElementById('result');
-    resultElement.innerHTML = `Country: ${countryName} <br> Capital: ${capital}`;
-}
 
-// You would also need to have an element with the id 'result' in your HTML to display the info
-// Example: <div id="result"></div>
-
-document.addEventListener("DOMContentLoaded", function () {
-    var modal = document.getElementById("myModal");
-    var overlay = document.getElementById("overlay");
-    modal.style.display = "block";
-    overlay.style.display = "block";
-});
-
-function closeModal() {
-    var modal = document.getElementById("myModal");
-    var overlay = document.getElementById("overlay");
-    
-    modal.style.display = "none";
-    overlay.style.display = "none";
 }
