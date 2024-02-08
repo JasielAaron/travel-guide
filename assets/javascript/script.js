@@ -39,3 +39,18 @@ function displayTravel(data) {
 
 // You would also need to have an element with the id 'result' in your HTML to display the info
 // Example: <div id="result"></div>
+
+document.addEventListener("DOMContentLoaded", function () {
+    var modal = document.getElementById("myModal");
+    var overlay = document.getElementById("overlay");
+    modal.style.display = "block";
+    overlay.style.display = "block";
+});
+
+function closeModal() {
+    var modal = document.getElementById("myModal");
+    var overlay = document.getElementById("overlay");
+    
+    modal.style.display = "none";
+    overlay.style.display = "none";
+}
