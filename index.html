@@ -4,49 +4,64 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Board Or Pass</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
   <link rel="stylesheet" href="assets/style/style.css">
   <script src="assets/javascript/script.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Istok+Web&display=swap" rel="stylesheet">
 
 </head>
-<body>
-  <section>
-    <header>
-      <h1>BOARD OR PASS?</h1>
-    </header>
-  <section>
-    <h3>SEARCH DESTINATION</h3>
-    <input class="input" type="text" placeholder="Text input">
-  </section>
-  <section>
-    <ul>
-      <li>COUNTRY NAME</li>
-      <li class="fill">Fill for CN</li>
-      <li>CAPITAL CITY</li>
-      <li class="fill">Fill for CC</li>
-      <li>POPULATION</li>
-      <li class="fill">Fill for PPL</li>
-    </ul>
-    <ul>
-      <li>LANGUAGE</li>
-      <li class="fill">Fill for LANG</li>
-      <li>CURRENCY</li>
-      <li class="fill">Fill for CUR</li>
-      <li>BITCHES???</li>
-      <li class="fill">Fill for btchs</li>
-    </ul>
-    <div id="bookmark">[+]</div>
-  </section>
-  <section>
-    <header>
-      <h2>WEATHER INFO</h2>
-    </header>
-    <ul>
-      <li>Weather type: type</li>
-      <li>Temp: degree</li>
-      <li>Humidity: hum</li>
-    </ul>
-  </section>
 
+<body>
+  <section class="ticketBody">
+
+    <header class="columns">
+      <div id="columnOverride">
+        <h1 id="tester">BOARD OR PASS?</h1>
+        <h2 id="tester">WEATHER INFO</h2>
+      </div>
+    </header>
+
+    <section class="columns">
+      <div class="column">
+        <ul>
+          <li>SEARCH DESTINATION</li>
+          <p class="control">
+            <input class="input" type="text" placeholder="Desination...">
+          </p>
+          <p class="control">
+            <button class="button">
+              Search
+            </button>
+          </p>
+          <li>COUNTRY NAME</li>
+          <li>NAME RESULT</li>
+          <li>CAPITAL CITY</li>
+          <li>CAPITAL RESULT</li>
+          <li>POPULATION</li>
+          <li>POPULATION RESULT</li>
+        </ul>
+      </div>
+      <div class="column">
+        <p class="bookmark">1</p>
+        <ul>
+          <li>LANGUAGE</li>
+          <li>LANG RESULT</li>
+          <li>CURRENCY</li>
+          <li>CURRENCY RESULT</li>
+          <li>BITCHES???</li>
+          <li>BITCHES RESULT</li>
+        </ul>
+      </div>
+      <div class="column">
+        <ul>
+          <li>[Weather Type]</li>
+          <li>[Humidity %]</li>
+          <li>[Tempurature]</li>
+        </ul>
+      </div>
+    </section>
   </section>
 </body>
 </html>
