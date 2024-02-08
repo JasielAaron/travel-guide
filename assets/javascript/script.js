@@ -1,7 +1,10 @@
+//add api key
+const apiKey ='';
+
 // Fixing the typo in the function call
 function getCountryInfo() {
     var search = searchInput.value.trim();
-    var countryInfo = `https://restcountries.com/v3.1/name/${search}`;
+    var countryInfo = `https://restcountries.com/v3.1/name/${search}`;// no access to this key
 
     fetch(countryInfo)
         .then(function (response) {
