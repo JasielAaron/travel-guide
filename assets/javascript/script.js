@@ -25,7 +25,7 @@ function displayCountry(display) {
     continentEl.textContent - "continent: " + display[0].continent;
 
     var populationEl = document.createElement('h3');
-    populationEl.textContent ="Population: " =display[0].population;
+    populationEl.textContent ="Population: " + display[0].population;
 
     card.appendChild(nameEl);
     card.appendChild(capitalEl);
