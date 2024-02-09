@@ -1,3 +1,4 @@
+
 var countryInput = document.getElementById('destinationInput'),
     searchButton = document.getElementById('searchButton'),
     search_result = document.getElementById('search_result'),
@@ -82,3 +83,4 @@ searchButton.addEventListener('click', () => {
 
 
 //}
+
