@@ -128,3 +128,7 @@ h2 {
 .tester2 {
     display: flex;
 }
+#search_result img {
+    margin-top: 20px;
+    width: 200px;
+}

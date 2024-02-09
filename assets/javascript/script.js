@@ -1,47 +1,86 @@
-var searchInput = document.querySelector('#input');
-var searchButton = document.querySelector('#button');
 
-// Function to fetch country information
-function getCountryInfo() {
-    var searchValue = searchInput.value; // Get the current value of the search input
-    var countryInfoURL = `https://restcountries.com/v3.1/name/${searchValue}`;
+var countryInput = document.getElementById('destinationInput'),
+    searchButton = document.getElementById('searchButton'),
+    search_result = document.getElementById('search_result'),
+    names = document.getElementById('name'),
+    capital = document.getElementById('capital'),
+    population = document.getElementById('population'),
+    continent = document.getElementById('continent'),
+    language = document.getElementById('language'),
+    currency = document.getElementById('currency'),
+    currencyShort = document.getElementById('currencyShort')
+    flag = document.getElementById('flag');
 
-    fetch(countryInfoURL)
-        .then(function (response) {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
-        .then(function (data) {
+searchButton.addEventListener('click', () => {
+    var countryName = countryInput.value;
+    var finalUrl = `https://restcountries.com/v3.1/name/${countryName}?fullText=true`
+    console.log(finalUrl);
+    fetch(finalUrl)
+        .then((response) => response.json())
+        .then((data) => {
             console.log(data);
-            displayCountry(data);
-        })
-        .catch(function (error) {
-            console.error('Error:', error);
-        });
-}
 
-// Function to display country information on the webpage
-function displayCountry(data) {
-    
-    var country = data[0];
+            countryData = data[0]
+            names.innerHTML = countryData.name.common
+            capital.innerHTML = countryData.capital
+            population.innerText = countryData.population
+            continent.innerHTML = countryData.continents
+            language.innerHTML = Object.values(countryData.languages).toString().split(',').join(',')
+            currency.innerHTML = countryData.currencies[Object.keys(countryData.currencies)].name
+            currencyShort.innerHTML = Object.keys(countryData.currencies)[0]
+            flag.src = countryData.flags.svg;
+         })
 
-    // Update country name
-    var countryNameEl = document.getElementById('countryNameResult');
-    countryNameEl.textContent = country.name.common; // Adjust according to actual data structure
+})
 
-    // Update capital city
-    var capitalEl = document.getElementById('capitalResult');
-    capitalEl.textContent = country.capital[0]; // Adjust if necessary
 
-    // Update population
-    var populationEl = document.getElementById('populationResult');
-    populationEl.textContent = country.population.toLocaleString(); // Converts number to a string with commas
 
-    // Add more updates here as needed for other data points like language, currency, etc.
-    // For example, if you have placeholders for language and currency, you can update them here similarly.
-}
 
-// Add event listener to the search button to trigger the getCountryInfo function when clicked
-searchButton.addEventListener('click', getCountryInfo);
+
+
+
+
+
+
+//document.addEventListener('DOMContentLoaded', function() {
+//const searchButton = document.getElementById('searchButton');
+//searchButton.addEventListener('click', function() {
+//const destination = document.getElementById('destinationInput').value;
+//fetchCountryInfo(destination);
+//});
+//});
+
+//function fetchCountryInfo(countryName) {
+//const apiKey = '5effe679202bb71692f127fed032bc1b';
+//const apiUrl = `https://api.countrylayer.com/v2/name/${countryName}?access_key=${apiKey}`;
+
+//fetch(apiUrl)
+//.then(response => {
+//if (!response.ok) {
+//throw new Error('Network response was not ok');
+//}
+//return response.json();
+//})
+//.then(data => {
+//if (data && data.length > 0) {
+//const country = data[0]; // Assuming the first result is the most relevant
+//displayCountryInfo(country);
+//} else {
+//console.log('No data found for the specified country');
+//}
+//})
+//.catch(error => {
+//console.error('There has been a problem with your fetch operation:', error);
+//});
+//}
+
+
+//function displayCountryInfo(country) {
+//document.getElementById('countryNameResult').textContent = country.name;
+//document.getElementById('capitalResult').textContent = country.capital;
+//document.getElementById('capitalRes').textContent = country.capital;
+// Add more elements as needed, ensuring HTML has corresponding IDs
+
+
+//}
+

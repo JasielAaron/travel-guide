@@ -14,7 +14,7 @@
 </head>
 
 <body>
-  <div class="overlay" id="overlay"></div>
+  <!--<div class="overlay" id="overlay"></div>
     
     <!-- <div class="modal" id="myModal">
         <div class="modal-content" id="modal-style">
@@ -51,25 +51,24 @@
             <input class="input" type="text" id="input">
           </p>
           <p class="control">
-            <button class="button" id="button">Search</button>
+
+            <button class="button" id="searchButton">Search</button>
+          <div id="search_result">
+            <li>COUNTRY: <span id="name"></span></li>
+          <li>CAPITAL: <span id="capital"></span></li>
+          <li>POPULATION: <span id="population"></span></li>
+          <li>CONTINENT: <span id="continent"></span></li>
+        </div>
           
-            <li>COUNTRY NAME:</li>
-            <li id="countryNameResult">[Result Placeholder]</li>
-            <li>CAPITAL CITY:</li>
-            <li id="capitalResult">[Result Placeholder]</li>
-            <li>POPULATION:</li>
-            <li id="populationResult">[Result Placeholder]</li>
+
         </ul>
       </div>
-      <div class="column">
+      <div class="column" id="search_result">
         <!-- <p class="bookmark">1</p> -->
         <ul>
-          <li>LANGUAGE</li>
-          <li>LANG RESULT</li>
-          <li>CURRENCY</li>
-          <li>CURRENCY RESULT</li>
-          <li>BITCHES???</li>
-          <li>BITCHES RESULT</li>
+          <li>LANGUAGES: <span id="language"></span></li>
+          <li>CURRENCY: <span id="currency"></span> - <span id="currencyShort"></span></li>
+          <img src="" alt="" id="flag" >
         </ul>
       </div>
       <div class="column">
