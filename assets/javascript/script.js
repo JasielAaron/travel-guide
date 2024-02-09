@@ -1,42 +1,34 @@
+var searchInput = document.querySelector('#input');
+var searchButton = document.querySelector('#button');
 
-document.addEventListener('DOMContentLoaded', function() {
-    const searchButton = document.getElementById('searchButton');
-    searchButton.addEventListener('click', function() {
-        const destination = document.getElementById('destinationInput').value;
-        fetchCountryInfo(destination);
+function getCountryInfo() {
+
+        var countryInfo = 'https://restcountries.com/v3.1/name/${search}';
+
+    fetch(countryInfo)
+    .then(function (response) {
+        return response.json();
+    })
+    .then(function (data) {
+        console.log(data)
+        clear()
+        displayCountry(data)
     });
-});
-
-function fetchCountryInfo(countryName) {
-    const apiKey = '5effe679202bb71692f127fed032bc1b';
-    const apiUrl = `https://api.countrylayer.com/v2/name/${countryName}?access_key=${apiKey}`;
-
-    fetch(apiUrl)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
-        .then(data => {
-            if (data && data.length > 0) {
-                const country = data[0]; // Assuming the first result is the most relevant
-                displayCountryInfo(country);
-            } else {
-                console.log('No data found for the specified country');
-            }
-        })
-        .catch(error => {
-            console.error('There has been a problem with your fetch operation:', error);
-        });
 }
+function displayCountry(display) {
+    var card =document.querySelector('#card');
 
+    var nameEl = document.createElement('h2');
+    nameEl.textcontent = display[0].name.official;
 
-function displayCountryInfo(country) {
-    document.getElementById('countryNameResult').textContent = country.name;
-    document.getElementById('capitalResult').textContent = country.capital;
-    document.getElementById('capitalRes').textContent = country.capital;
-    // Add more elements as needed, ensuring HTML has corresponding IDs
+    var continentEl = document.createElement('h3');
+    continentEl.textContent - "continent: " + display[0].continent;
 
+    var populationEl = document.createElement('h3');
+    populationEl.textContent ="Population: " =display[0].population;
 
+    card.appendChild(nameEl);
+    card.appendChild(capitalEl);
+    card.appendChild(continentEl);
+    card.appendChild(populationEl);
 }
