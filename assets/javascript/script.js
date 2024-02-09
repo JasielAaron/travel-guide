@@ -1,37 +1,47 @@
 var searchInput = document.querySelector('#input');
 var searchButton = document.querySelector('#button');
 
+// Function to fetch country information
 function getCountryInfo() {
+    var searchValue = searchInput.value; // Get the current value of the search input
+    var countryInfoURL = `https://restcountries.com/v3.1/name/${searchValue}`;
 
-        var countryInfo = 'https://restcountries.com/v3.1/name/${search}';
-
-    fetch(countryInfo)
-    .then(function (response) {
-        return response.json();
-    })
-    .then(function (data) {
-        console.log(data)
-        clear()
-        displayCountry(data)
-    });
+    fetch(countryInfoURL)
+        .then(function (response) {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(function (data) {
+            console.log(data);
+            displayCountry(data);
+        })
+        .catch(function (error) {
+            console.error('Error:', error);
+        });
 }
-function displayCountry(display) {
-    var card =document.querySelector('#card');
 
-    var nameEl = document.createElement('h2');
-    nameEl.textcontent = display[0].name.official;
-
-    var continentEl = document.createElement('h3');
-    continentEl.textContent - "Continent: " + display[0].continent;
-
-    var populationEl = document.createElement('h3');
-    populationEl.textContent ="Population: " + display[0].population;
-
-    var capitalEl = document.createElement('h3');
-    capitalEl.textContent ="Capital: " + display[0].capital;
+// Function to display country information on the webpage
+function displayCountry(data) {
     
-    card.appendChild(nameEl);
-    card.appendChild(capitalEl);
-    card.appendChild(continentEl);
-    card.appendChild(populationEl);
+    var country = data[0];
+
+    // Update country name
+    var countryNameEl = document.getElementById('countryNameResult');
+    countryNameEl.textContent = country.name.common; // Adjust according to actual data structure
+
+    // Update capital city
+    var capitalEl = document.getElementById('capitalResult');
+    capitalEl.textContent = country.capital[0]; // Adjust if necessary
+
+    // Update population
+    var populationEl = document.getElementById('populationResult');
+    populationEl.textContent = country.population.toLocaleString(); // Converts number to a string with commas
+
+    // Add more updates here as needed for other data points like language, currency, etc.
+    // For example, if you have placeholders for language and currency, you can update them here similarly.
 }
+
+// Add event listener to the search button to trigger the getCountryInfo function when clicked
+searchButton.addEventListener('click', getCountryInfo);
