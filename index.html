@@ -23,12 +23,6 @@
             <p id="textsizeM">A travel destination tool that allows you</p>
             <p id="textsizeM">to research somewhere before you commit to</p>
             <p id="textsizeM">purchasing and booking your trips.</p>
-            <br>
-             <p id="textsizeS">If you are interested in a destination</p>  
-             <p id="textsizeS">you can bookmark the information for later</p> 
-             <p id="textsizeS">by clicking on our bookmarking tool</p> 
-            <br>
-             <img src="assets/bookmark.png"> 
          </div> 
      </div>  
 
@@ -45,36 +39,41 @@
       <div class="column">
         <ul>
           <li>SEARCH DESTINATION</li>
-
-          <p class="control">
+          <div class="control" id="inline-Test">
             <input class="input" type="text" id="destinationInput">
-          </p>
-          <p class="control">
-
             <button class="button" id="searchButton">Search</button>
+          </div>
           <div id="search_result">
-            <li>COUNTRY: <span id="name"></span></li>
-          <li>CAPITAL: <span id="capital"></span></li>
-          <li>POPULATION: <span id="population"></span></li>
-          <li>CONTINENT: <span id="continent"></span></li>
+            <br>
+            <li id="resultBar">COUNTRY: <span id="name"></span></li>
+            <br>
+          <li id="resultBar">CAPITAL: <span id="capital"></span></li>
+          <br>
+          <li id="resultBar">POPULATION: <span id="population"></span></li>
+          <br>
+          <li id="resultBar">CONTINENT: <span id="continent"></span></li>
         </div>
           
 
         </ul>
       </div>
       <div class="column" id="search_result">
-         <p class="bookmark">1</p> 
         <ul>
-          <li>LANGUAGES: <span id="language"></span></li>
-          <li>CURRENCY: <span id="currency"></span> - <span id="currencyShort"></span></li>
-          <img src="" alt="" id="flag" >
+          <li id="resultBar">LANGUAGES: <span id="language"></span></li>
+          <br>
+          <li id="resultBar">CURRENCY: <span id="currency"></span> - <span id="currencyShort"></span></li>
+          <img src="" alt="" id="flag">
         </ul>
       </div>
       <div class="column" id="current">
         <ul>
-          <li>[Weather Type] <span id="weathertype"></span></li>
-          <li>[Humidity %] <span id="humidity"></span> </li>
-          <li>[Tempurature] <span id="tempurature"></span></li>
+          <div id="weather-box">
+            <img src="assets/sunny.png" alt="" id="weather-emoji">
+          </div>
+          <br>
+          <li>Weather: <span id="weathertype"></span></li>
+          <li>Humidity: <span id="humidity"></span>%</li>
+          <li>Temp: <span id="tempurature"></span>F°</li>
         </ul>
       </div>
     </section>
