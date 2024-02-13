@@ -53,7 +53,7 @@ function getCurrentWeather(capital, apiKey) {
     fetch(url)
         .then((response) => response.json())
         .then((data) => {
-            weatherType.innerHTML = data.weather[0].description;
+            weatherType.innerHTML = data.weather[0].main;
             tempurature.innerHTML = data.main.temp;
             humidity.innerHTML = data.main.humidity;
         })
